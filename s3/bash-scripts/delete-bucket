@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+echo "== delete bucket"
+
+if [ -z "$1" ]; then
+    echo "No bucket name provided"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+
+
+#we can do multi line with the \ character
+aws s3api delete-bucket \
+--bucket $BUCKET_NAME \
+--query Location \
+--output text
