@@ -8,10 +8,4 @@ Resources:
       Handler: index.handler
       Runtime: python3.12
       PackageType: Zip
-      InlineCode: |
-        def handler(event, context):
-          message = 'Hello {} {}!'.format(event['first_name'], event['last_name'])
-          print("Log this for me")
-          return {
-              'message' : message
-          }
+      CodeUri: "./function/"
