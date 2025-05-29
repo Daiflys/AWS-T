@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+root_path=$(realpath .)
+echo $root_path
+config_path="$(realpath .)/samconfig.toml"
+
+template_path="${root_path}/.aws-sam/build/template.yaml"
+output_template_path="${root_path}/.aws-sam/build/packaged.yaml"
+
+echo "== SAM package.."
+
+sam package \
+    --config-file "$config_path" \
+    --template-file "$template_path" \
+    --output-template-file $output_template_path \
+    --s3-prefix "zip-package-python"

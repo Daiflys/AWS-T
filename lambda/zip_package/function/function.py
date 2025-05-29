@@ -5,7 +5,7 @@ def handler(event, context):
 
     # a Python object (dict):
     info = {
-        "Type": "Zip Inline",
+        "Type": "Zip Package",
         "Version": 1
     }
 
