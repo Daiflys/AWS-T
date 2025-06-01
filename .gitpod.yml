@@ -26,3 +26,6 @@ tasks:
       export AWS_CLI_AUTO_PROMPT: on-partial
     before: |
       source bin/aws_cli_install.sh
+  - name: sam-cli
+    before: |
+      source bin/aws_sam_cli_install.sh
