@@ -4,11 +4,10 @@ from faker import Faker
 def handler(event, context):
     fake = Faker()
 
-    message = 'Hello {} {}!'.format(fake.name())
+    message = 'Hello {}!'.format(fake.name())
 
-    # a Python object (dict):
     info = {
-        "Type": "Zip Package",
+        "Type": "Container example",
         "Version": 1
     }
 

@@ -3,8 +3,10 @@ set -e
 
 root_path=$(realpath .)
 template_path="${root_path}/template.yaml"
+function_path="${root_path}/function"
 
 echo "== SAM build..."
 echo "using template: ${template_path}"
 sam build \
-    --template-file "${template_path}"
+    --template-file "${template_path}" \
+    --base-dir "${function_path}"

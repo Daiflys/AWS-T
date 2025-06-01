@@ -16,7 +16,6 @@ echo "loading configuration: $config_path"
 
 sam deploy \
     --template-file "./.aws-sam/build/packaged.yaml" \
-    --stack-name "zip-package-lambda-py" \
+    --stack-name "container-lambda-py" \
     --capabilities "CAPABILITY_IAM" \
     --config-file "$config_path"
-        #--config-file "$config_path" \
