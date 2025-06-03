@@ -15,7 +15,7 @@ echo "== SAM deploy..."
 echo "loading configuration: $config_path"
 
 sam deploy \
-    --template-file "./.aws-sam/build/packaged.yaml" \
+    --template-file "./.aws-sam/build/template.yaml" \
     --stack-name "container-lambda-py" \
     --capabilities "CAPABILITY_IAM" \
     --config-file "$config_path"

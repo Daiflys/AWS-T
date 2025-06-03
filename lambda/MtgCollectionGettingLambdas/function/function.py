@@ -17,12 +17,14 @@ def handler(event, context):
 
     try:
         creds = get_db_credentials("mtg-db-credentials")
+        print(" Obtuve secretos:", creds)
         conn = psycopg2.connect(
             host=creds["host"],
             database=creds["dbInstanceIdentifier"],
             user=creds["username"],
             password=creds["password"],
-            port=creds.get("port", 5432)
+            port=creds.get("port", 5432),
+            connect_timeout=5 #seconds
         )
         cur = conn.cursor()
 
