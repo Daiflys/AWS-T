@@ -4,6 +4,7 @@ import boto3
 
 
 def get_db_credentials(secret_name):
+    print("getting credentials from secrets manager...")
     client = boto3.client("secretsmanager")
     response = client.get_secret_value(SecretId=secret_name)
     secret = json.loads(response["SecretString"])
@@ -11,6 +12,7 @@ def get_db_credentials(secret_name):
 
 def handler(event, context):
     # Obtener el término de búsqueda del query string
+    print("handler start")
     search_term = event.get("queryStringParameters", {}).get("q", "Ancestral")
     if not search_term:
         search_term = "Ancestral"
@@ -30,14 +32,15 @@ def handler(event, context):
 
         # Búsqueda por nombre parcial (ignorando mayúsculas/minúsculas)
         query = """
-            SELECT scryfall_id, set_name, card_type, mana_cost, name_en, image_url
+            SELECT scryfall_id, set_name, card_type, mana_cost, name_enA, image_url
             FROM cards
             WHERE LOWER(name_en) LIKE %s
             LIMIT 20
         """
+        print("going to execute query")
         cur.execute(query, (f"%{search_term.lower()}%",))
         rows = cur.fetchall()
-
+        print("query executed")
         results = []
         for row in rows:
             results.append({
