@@ -13,3 +13,7 @@ aws s3api put-object --bucket metadata-fun-ab-1275129035 --key hello.txt --body 
 ## Get Metadata through head object
 
 aws s3api head-object --bucket metadata-fun-ab-1275129035 --key hello.txt
+
+## delete the bucket and the file inside
+
+aws s3 rb s3://metadata-fun-ab-1275129035 --force
